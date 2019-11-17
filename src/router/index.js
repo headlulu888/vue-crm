@@ -9,6 +9,22 @@ const routes = [
     path: '/',
     name: 'home',
     component: Home
+  },
+  {
+    path: '/login',
+    name: 'login',
+    meta: {
+      layout: 'empty'
+    },
+    component: () => import('../views/Login.vue')
+  },
+  {
+    path: '/categories',
+    name: 'categories',
+    meta: {
+      layout: 'main'
+    },
+    component: () => import('../views/Categories.vue')
   }
 ]
 

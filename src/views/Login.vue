@@ -10,16 +10,31 @@
           :class="{invalid: ($v.email.$dirty && !$v.email.required) || ($v.email.$dirty && !$v.email.email)}"
       >
       <label for="email">Email</label>
-      <small class="helper-text invalid">Email</small>
+      <small 
+        class="helper-text invalid"
+        v-if="$v.email.$dirty && !$v.email.required"
+      >Поле email не должно быть пустым</small>
+      <small 
+        class="helper-text invalid"
+        v-else-if="$v.email.$dirty && !$v.email.email"
+      >Введите корректный email</small>
     </div>
     <div class="input-field">
       <input
           id="password"
           type="password"
-          class="validate"
+          v-model.trim="password"
+          :class="{invalid: ($v.password.$dirty && !$v.password.required) || ($v.password.$dirty && !$v.password.minLength)}"
       >
       <label for="password">Пароль</label>
-      <small class="helper-text invalid">Password</small>
+      <small 
+        class="helper-text invalid"
+        v-if="$v.password.$dirty && !$v.password.required"
+      >Введите пароль</small>
+      <small 
+        class="helper-text invalid"
+        v-else-if="$v.password.$dirty && !$v.password.minLength"
+      >Пароль должен быть {{$v.password.$params.minLength.min}} символов. Сейчас их {{ password.length }}</small>
     </div>
   </div>
   <div class="card-action">
@@ -50,12 +65,13 @@ export default {
     email: '',
     password: ''
   }),
-  validation: {
+  validations: {
     email: {email, required},
-    password: {required, minLength: minLength(6)}
+    password: {required, minLength: minLength(8)}
   },
   methods: {
     submitHandler() {
+      console.log(this.$v.password)
       if (this.$v.$invalid) {
         this.$v.$touch()
         return

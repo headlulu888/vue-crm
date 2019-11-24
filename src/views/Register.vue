@@ -4,10 +4,10 @@
       <span class="card-title">Домашняя бухгалтерия</span>
       <div class="input-field">
         <input
-            id="email"
-            type="text"
-            v-model.trim="email"
-            :class="{invalid: ($v.email.$dirty && !$v.email.required) || ($v.email.$dirty && !$v.email.email)}"
+          id="email"
+          type="text"
+          v-model.trim="email"
+          :class="{invalid: ($v.email.$dirty && !$v.email.required) || ($v.email.$dirty && !$v.email.email)}"
         >
         <label for="email">Email</label>
         <small 
@@ -21,10 +21,10 @@
       </div>
       <div class="input-field">
         <input
-            id="password"
-            type="password"
-            v-model.trim="password"
-            :class="{invalid: ($v.password.$dirty && !$v.password.required) || ($v.password.$dirty && !$v.password.minLength)}"
+          id="password"
+          type="password"
+          v-model.trim="password"
+          :class="{invalid: ($v.password.$dirty && !$v.password.required) || ($v.password.$dirty && !$v.password.minLength)}"
         >
         <label for="password">Пароль</label>
         <small 
@@ -38,10 +38,10 @@
       </div>
       <div class="input-field">
         <input
-            id="name"
-            type="text"
-            v-model.trim="name"
-            :class="{invalid: $v.name.$dirty && !$v.name.required}"
+          id="name"
+          type="text"
+          v-model.trim="name"
+          :class="{invalid: $v.name.$dirty && !$v.name.required}"
         >
         <label for="name">Имя</label>
         <small 
@@ -59,8 +59,8 @@
     <div class="card-action">
       <div>
         <button
-            class="btn waves-effect waves-light auth-submit"
-            type="submit"
+          class="btn waves-effect waves-light auth-submit"
+          type="submit"
         >
           Зарегистрироваться
           <i class="material-icons right">send</i>
@@ -94,7 +94,7 @@ export default {
   },
   methods: {
     submitHandler() {
-      if (this.$v.invalid) {
+      if (this.$v.$invalid) {
         this.$v.$touch()
         return
       }

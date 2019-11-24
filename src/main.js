@@ -3,7 +3,7 @@ import Vuelidate from 'vuelidate'
 import App from './App.vue'
 import router from './router'
 import store from './store'
-import messagePlugin from '@/utils/messagePlugin'
+import messagePlugin from '@/utils/message.plugin'
 import dateFilter from '@/filters/date.filters'
 
 import 'materialize-css/dist/js/materialize.min'
